@@ -1,0 +1,1330 @@
+<title>Экоцентр Новороссийск</title>
+
+<style>
+/* Design plan:
+   Subject: Ecological education center for youth and community in Novorossiysk
+   Layout: Clean, breathing sections with natural visual rhythm; hero with soft intro, program cards in adaptive grid, genuine testimonials, practical contact section
+   Palette: Earth-rooted with fresh botanical accent — grounded, optimistic, approachable
+   Type: Display with character for headings, clear body for extended reading
+*/
+
+:root {
+  /* Color tokens - light theme */
+  --surface: #faf9f7;
+  --surface-raised: #ffffff;
+  --ink-primary: #1a2e1a;
+  --ink-secondary: #4a5a4a;
+  --ink-muted: #7a8a7a;
+  --accent: #2d7a3e;
+  --accent-soft: #e8f3eb;
+  --earth: #8b6f47;
+  --sky: #6b9bb5;
+  --highlight: #f4e8d8;
+
+  /* Semantic colors */
+  --border: #d5d9d5;
+  --hover-lift: rgba(45, 122, 62, 0.04);
+
+  /* Typography */
+  --font-display: 'Literata', 'Georgia', serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-utility: 'JetBrains Mono', 'Courier New', monospace;
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --surface: #1a2118;
+    --surface-raised: #232d21;
+    --ink-primary: #e8ede8;
+    --ink-secondary: #b8c5b8;
+    --ink-muted: #889888;
+    --accent: #4da65f;
+    --accent-soft: #1f3325;
+    --earth: #b89968;
+    --sky: #8bb3ca;
+    --highlight: #3d3326;
+    --border: #3a4538;
+    --hover-lift: rgba(77, 166, 95, 0.08);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --surface: #1a2118;
+  --surface-raised: #232d21;
+  --ink-primary: #e8ede8;
+  --ink-secondary: #b8c5b8;
+  --ink-muted: #889888;
+  --accent: #4da65f;
+  --accent-soft: #1f3325;
+  --earth: #b89968;
+  --sky: #8bb3ca;
+  --highlight: #3d3326;
+  --border: #3a4538;
+  --hover-lift: rgba(77, 166, 95, 0.08);
+  color-scheme: dark;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(135deg, #e8f5ec 0%, #f4f9f6 25%, #fef9f3 50%, #f0f7f4 75%, #e6f4ec 100%);
+  color: var(--ink-primary);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: -20%;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(45, 122, 62, 0.25) 0%, rgba(45, 122, 62, 0.1) 40%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(60px);
+  z-index: -1;
+  animation: float1 15s ease-in-out infinite;
+  pointer-events: none;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  bottom: -10%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(107, 155, 181, 0.2) 0%, rgba(139, 111, 71, 0.15) 40%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(70px);
+  z-index: -1;
+  animation: float2 20s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes float1 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(30px, 40px) scale(1.1);
+  }
+}
+
+@keyframes float2 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+  50% {
+    transform: translate(-40px, -30px) scale(1.15) rotate(10deg);
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-inline: 24px;
+}
+
+/* Header */
+header {
+  padding-block: 24px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-raised);
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 100;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--ink-primary);
+}
+
+.logo-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--accent);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.logo-text {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+nav ul {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+nav a {
+  color: var(--ink-secondary);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+/* Hero section */
+.hero {
+  padding-block: 80px 64px;
+  position: relative;
+}
+
+.hero::before {
+  content: '🌿';
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  font-size: 120px;
+  opacity: 0.15;
+  animation: rotate 20s linear infinite;
+}
+
+.hero::after {
+  content: '🌍';
+  position: absolute;
+  bottom: 10%;
+  left: 5%;
+  font-size: 100px;
+  opacity: 0.1;
+  animation: bounce 3s ease-in-out infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.hero-content {
+  max-width: 720px;
+  animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  text-wrap: balance;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, var(--ink-primary) 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 5s ease infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.hero-subtitle {
+  font-size: 20px;
+  color: var(--ink-secondary);
+  margin-bottom: 40px;
+  line-height: 1.5;
+  max-width: 600px;
+}
+
+.cta-group {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-block;
+  cursor: pointer;
+  border: none;
+  font-family: var(--font-body);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #2d7a3e 0%, #3a9250 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(45, 122, 62, 0.3);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #256a33 0%, #2d7a3e 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(45, 122, 62, 0.4);
+}
+
+.btn-secondary {
+  background: var(--accent-soft);
+  color: var(--accent);
+  border: 2px solid var(--accent);
+}
+
+.btn-secondary:hover {
+  background: var(--accent);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(45, 122, 62, 0.3);
+}
+
+/* Section styling */
+section {
+  padding-block: 80px;
+}
+
+.section-header {
+  max-width: 640px;
+  margin-bottom: 56px;
+}
+
+.section-label {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4vw, 42px);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 16px;
+  text-wrap: balance;
+  letter-spacing: -0.01em;
+}
+
+.section-description {
+  font-size: 18px;
+  color: var(--ink-secondary);
+  line-height: 1.6;
+}
+
+/* About section */
+.about {
+  background: var(--surface-raised);
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 48px;
+  margin-top: 40px;
+}
+
+.about-text {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--ink-secondary);
+}
+
+.about-text p + p {
+  margin-top: 16px;
+}
+
+.highlight-quote {
+  background: var(--highlight);
+  border-left: 3px solid var(--accent);
+  padding: 20px 24px;
+  margin-top: 32px;
+  border-radius: 4px;
+}
+
+.highlight-quote p {
+  font-style: italic;
+  color: var(--ink-primary);
+  font-size: 16px;
+}
+
+/* Programs section */
+.programs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
+}
+
+.program-card {
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.program-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, var(--accent-soft) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.4s;
+  z-index: 0;
+}
+
+.program-card:hover::before {
+  opacity: 1;
+}
+
+.program-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(45, 122, 62, 0.2);
+  border-color: var(--accent);
+}
+
+.program-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.program-icon {
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--sky) 100%);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 20px rgba(45, 122, 62, 0.2);
+  transition: all 0.4s;
+  animation: iconPulse 2s ease-in-out infinite;
+}
+
+.program-card:hover .program-icon {
+  transform: scale(1.15) rotate(10deg);
+  box-shadow: 0 12px 30px rgba(45, 122, 62, 0.4);
+}
+
+@keyframes iconPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.program-card h3 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--ink-primary);
+}
+
+.program-card p {
+  color: var(--ink-secondary);
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+/* Gallery section */
+.gallery {
+  background: var(--surface-raised);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.gallery-item {
+  aspect-ratio: 4/3;
+  background: var(--accent-soft);
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.gallery-item:hover {
+  transform: scale(1.02);
+}
+
+.gallery-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  background: linear-gradient(135deg, var(--accent-soft) 0%, var(--highlight) 100%);
+}
+
+/* Testimonials section */
+.testimonials-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
+  margin-top: 48px;
+}
+
+.testimonial {
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.testimonial::before {
+  content: '"';
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 80px;
+  color: var(--accent);
+  opacity: 0.15;
+  font-family: var(--font-display);
+  line-height: 1;
+}
+
+.testimonial:hover {
+  transform: scale(1.03);
+  box-shadow: 0 15px 35px rgba(45, 122, 62, 0.15);
+  border-color: var(--accent);
+}
+
+.testimonial-text {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--ink-secondary);
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.author-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.author-info h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink-primary);
+  margin-bottom: 2px;
+}
+
+.author-info p {
+  font-size: 13px;
+  color: var(--ink-muted);
+}
+
+/* Location section */
+.location {
+  background: var(--surface-raised);
+}
+
+.location-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 48px;
+  margin-top: 40px;
+}
+
+.location-details {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.location-item {
+  display: flex;
+  gap: 16px;
+}
+
+.location-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--accent-soft);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 20px;
+}
+
+.location-info h4 {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-muted);
+  margin-bottom: 6px;
+}
+
+.location-info p {
+  font-size: 16px;
+  color: var(--ink-primary);
+  line-height: 1.5;
+}
+
+.location-info a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.location-info a:hover {
+  text-decoration: underline;
+}
+
+.map-container {
+  aspect-ratio: 16/10;
+  background: var(--accent-soft);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  position: relative;
+}
+
+.map-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 48px;
+  color: var(--ink-muted);
+}
+
+.map-placeholder p {
+  font-size: 14px;
+  color: var(--ink-muted);
+}
+
+/* Contact section */
+.contact-content {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.contact-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 48px;
+}
+
+.contact-method {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s;
+}
+
+.contact-method:hover {
+  background: var(--hover-lift);
+  border-color: var(--accent);
+  transform: translateX(4px);
+}
+
+.contact-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--accent-soft);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.contact-text h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink-primary);
+  margin-bottom: 4px;
+}
+
+.contact-text p {
+  font-size: 14px;
+  color: var(--ink-secondary);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: var(--surface-raised);
+  padding: 32px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink-primary);
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: var(--font-body);
+  background: var(--surface);
+  color: var(--ink-primary);
+  transition: all 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.form-group textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Footer */
+footer {
+  background: var(--surface-raised);
+  border-top: 1px solid var(--border);
+  padding-block: 48px 32px;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 48px;
+  margin-bottom: 32px;
+}
+
+.footer-section h4 {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-primary);
+  margin-bottom: 16px;
+}
+
+.footer-section p,
+.footer-section a {
+  font-size: 14px;
+  color: var(--ink-secondary);
+  line-height: 1.6;
+}
+
+.footer-section a {
+  text-decoration: none;
+  display: block;
+  margin-bottom: 8px;
+  transition: color 0.2s;
+}
+
+.footer-section a:hover {
+  color: var(--accent);
+}
+
+.footer-bottom {
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  color: var(--ink-muted);
+  font-size: 13px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  nav ul {
+    gap: 20px;
+  }
+
+  .hero {
+    padding-block: 48px 40px;
+  }
+
+  section {
+    padding-block: 56px;
+  }
+
+  .programs-grid,
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .location-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Floating particles */
+.floating-particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  font-size: 24px;
+  opacity: 0.6;
+  animation: floatParticle linear infinite;
+}
+
+@keyframes floatParticle {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Section animations */
+.section-header {
+  animation: fadeInDown 0.8s ease-out;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .particle {
+    display: none;
+  }
+}
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Floating particles -->
+<div class="floating-particles" id="particles"></div>
+
+<header>
+  <div class="container">
+    <div class="header-content">
+      <a href="#" class="logo">
+        <div class="logo-icon">🌱</div>
+        <span class="logo-text">Экоцентр</span>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="#about">О нас</a></li>
+          <li><a href="#programs">Программы</a></li>
+          <li><a href="#location">Контакты</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Экологическое образование для будущего Новороссийска</h1>
+        <p class="hero-subtitle">Приглашаем школьников, подростков и всех неравнодушных к природе на наши образовательные программы, мастер-классы и экологические мероприятия</p>
+        <div class="cta-group">
+          <a href="#programs" class="btn btn-primary">Наши программы</a>
+          <a href="#location" class="btn btn-secondary">Связаться с нами</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">О нас</div>
+        <h2 class="section-title">Место, где забота об экологии становится образом жизни</h2>
+      </div>
+      <div class="about-content">
+        <div class="about-text">
+          <p>Экоцентр Новороссийска — это современное пространство для экологического просвещения и развития экологической культуры среди молодежи и жителей города.</p>
+          <p>Мы создаём среду, в которой дети и подростки открывают для себя важность бережного отношения к природе через практику, исследования и живое общение с единомышленниками.</p>
+        </div>
+        <div>
+          <div class="highlight-quote">
+            <p>«Чудесное место с очень приятными сотрудниками! Точно стоит посетить!»</p>
+          </div>
+          <div class="highlight-quote">
+            <p>«Очень полезное дело! И ребята там супер, рассказывают всё понятно.»</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="programs" class="programs">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Программы</div>
+        <h2 class="section-title">Чем мы занимаемся</h2>
+        <p class="section-description">Наши направления работы охватывают образование, практику и вовлечение сообщества в экологические инициативы</p>
+      </div>
+      <div class="programs-grid">
+        <div class="program-card">
+          <div class="program-icon">📚</div>
+          <h3>Экологическое образование</h3>
+          <p>Лекции, семинары и образовательные курсы для школьников и подростков о природе, экосистемах и устойчивом развитии</p>
+        </div>
+        <div class="program-card">
+          <div class="program-icon">🛠️</div>
+          <h3>Мастер-классы</h3>
+          <p>Практические занятия по переработке отходов, созданию экопродуктов, осознанному потреблению и заботе о природе</p>
+        </div>
+        <div class="program-card">
+          <div class="program-icon">🤝</div>
+          <h3>Волонтёрские программы</h3>
+          <p>Участие в экологических акциях, уборках территорий, озеленении и защите окружающей среды вместе с командой</p>
+        </div>
+        <div class="program-card">
+          <div class="program-icon">🎯</div>
+          <h3>Мероприятия для молодежи</h3>
+          <p>Тематические встречи, экоквесты, экскурсии и проекты, направленные на формирование экологической культуры среди подростков</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery" class="gallery">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Галерея</div>
+        <h2 class="section-title">Наше пространство</h2>
+        <p class="section-description">Посмотрите, как проходят наши занятия и мероприятия</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <div class="gallery-placeholder">🌿</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder">♻️</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder">🌍</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder">🌳</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder">🌺</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder">🦋</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonials" class="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Отзывы</div>
+        <h2 class="section-title">Что говорят о нас</h2>
+      </div>
+      <div class="testimonials-container">
+        <div class="testimonial">
+          <p class="testimonial-text">«Чудесное место с очень приятными сотрудниками! Точно стоит посетить!»</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">А</div>
+            <div class="author-info">
+              <h4>Арина Вирокайтис</h4>
+              <p>8 апреля 2024</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial">
+          <p class="testimonial-text">«Очень приятное место для подростков! Полезно и интересно!»</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">Э</div>
+            <div class="author-info">
+              <h4>Эльвина С.</h4>
+              <p>10 августа 2024</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial">
+          <p class="testimonial-text">«Очень полезное дело! И ребята там супер, рассказывают всё понятно. Эмилия Руслановна отдельная любовь...»</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">V</div>
+            <div class="author-info">
+              <h4>Vadim Gritsenko</h4>
+              <p>8 апреля 2024</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="location" class="location">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Как нас найти</div>
+        <h2 class="section-title">Приходите к нам</h2>
+      </div>
+      <div class="location-content">
+        <div class="location-details">
+          <div class="location-item">
+            <div class="location-icon">📍</div>
+            <div class="location-info">
+              <h4>Адрес</h4>
+              <p>просп. Ленина, 95В<br>Новороссийск</p>
+            </div>
+          </div>
+          <div class="location-item">
+            <div class="location-icon">🚌</div>
+            <div class="location-info">
+              <h4>Транспорт</h4>
+              <p>Остановка «Молодёжная улица»<br>Маршрут 4 (206 м от центра)</p>
+            </div>
+          </div>
+          <div class="location-item">
+            <div class="location-icon">⏰</div>
+            <div class="location-info">
+              <h4>Часы работы</h4>
+              <p>Открыто до 18:00</p>
+            </div>
+          </div>
+          <div class="location-item">
+            <div class="location-icon">⭐</div>
+            <div class="location-info">
+              <h4>Рейтинг</h4>
+              <p>5 положительных отзывов</p>
+            </div>
+          </div>
+        </div>
+        <div class="map-container">
+          <div class="map-placeholder">
+            <span>🗺️</span>
+            <p>Карта: просп. Ленина, 95В, Новороссийск</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Контакты</div>
+        <h2 class="section-title">Свяжитесь с нами</h2>
+        <p class="section-description">Выберите удобный способ связи или оставьте сообщение через форму ниже</p>
+      </div>
+      <div class="contact-content">
+        <div class="contact-methods">
+          <a href="https://t.me/ecocenternvrs" class="contact-method" target="_blank" rel="noopener noreferrer">
+            <div class="contact-icon">✈️</div>
+            <div class="contact-text">
+              <h4>Telegram</h4>
+              <p>@ecocenternvrs</p>
+            </div>
+          </a>
+          <a href="https://max.ru/join/FLTYW4bZkv1xwgcUsasztYPZz6BH07BedSJPUZHD3pY" class="contact-method" target="_blank" rel="noopener noreferrer">
+            <div class="contact-icon">🔗</div>
+            <div class="contact-text">
+              <h4>Max.ru</h4>
+              <p>Присоединяйтесь к нашему сообществу</p>
+            </div>
+          </a>
+        </div>
+
+        <form class="contact-form" id="contactForm">
+          <div class="form-group">
+            <label for="name">Ваше имя</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Сообщение</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Отправить сообщение</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Экоцентр</h4>
+        <p>Экологическое образование и просвещение в Новороссийске</p>
+      </div>
+      <div class="footer-section">
+        <h4>Навигация</h4>
+        <a href="#about">О нас</a>
+        <a href="#programs">Программы</a>
+        <a href="#gallery">Галерея</a>
+        <a href="#location">Контакты</a>
+      </div>
+      <div class="footer-section">
+        <h4>Связь</h4>
+        <a href="https://t.me/ecocenternvrs" target="_blank" rel="noopener noreferrer">Telegram</a>
+        <a href="https://max.ru/join/FLTYW4bZkv1xwgcUsasztYPZz6BH07BedSJPUZHD3pY" target="_blank" rel="noopener noreferrer">Max.ru</a>
+      </div>
+      <div class="footer-section">
+        <h4>Адрес</h4>
+        <p>просп. Ленина, 95В<br>Новороссийск<br>Открыто до 18:00</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Экоцентр Новороссийск. Забота о природе начинается с образования.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Form handling
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const formData = {
+    name: document.getElementById('name').value,
+    email: document.getElementById('email').value,
+    message: document.getElementById('message').value,
+    timestamp: new Date().toISOString()
+  };
+
+  // Store in localStorage as example (in real app would send to server)
+  try {
+    const submissions = JSON.parse(localStorage.getItem('contactSubmissions') || '[]');
+    submissions.push(formData);
+    localStorage.setItem('contactSubmissions', JSON.stringify(submissions));
+  } catch (e) {
+    console.log('Storage not available');
+  }
+
+  // Show success message
+  const btn = this.querySelector('button[type="submit"]');
+  const originalText = btn.textContent;
+  btn.textContent = '✓ Сообщение отправлено!';
+  btn.style.background = '#2d7a3e';
+
+  // Reset form
+  this.reset();
+
+  // Reset button after 3 seconds
+  setTimeout(() => {
+    btn.textContent = originalText;
+    btn.style.background = '';
+  }, 3000);
+});
+
+// Smooth scroll for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      const headerHeight = document.querySelector('header').offsetHeight;
+      const targetPosition = target.offsetTop - headerHeight - 20;
+      window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth'
+      });
+    }
+  });
+});
+
+// Add intersection observer for subtle animations
+if ('IntersectionObserver' in window) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  // Observe cards and sections for subtle fade-in
+  document.querySelectorAll('.program-card, .testimonial, .location-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+}
+
+// Create floating particles
+function createFloatingParticles() {
+  const particles = document.getElementById('particles');
+  if (!particles) return;
+
+  const icons = ['🌿', '🍃', '🌱', '🌾', '🌳', '💚', '♻️', '🌍'];
+  const particleCount = 15;
+
+  for (let i = 0; i < particleCount; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+    particle.textContent = icons[Math.floor(Math.random() * icons.length)];
+    particle.style.left = Math.random() * 100 + '%';
+    particle.style.animationDuration = (15 + Math.random() * 20) + 's';
+    particle.style.animationDelay = Math.random() * 5 + 's';
+    particle.style.fontSize = (20 + Math.random() * 20) + 'px';
+    particles.appendChild(particle);
+  }
+}
+
+// Initialize particles
+if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+  createFloatingParticles();
+}
+
+// Add parallax effect to hero decorations
+window.addEventListener('scroll', () => {
+  const scrolled = window.pageYOffset;
+  const hero = document.querySelector('.hero');
+  if (hero) {
+    hero.style.transform = `translateY(${scrolled * 0.3}px)`;
+  }
+});
+</script>
